@@ -1,0 +1,18 @@
+/* Ensure header is fixed on the left side and takes full height */
+header {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100vh; /* Full viewport height */
+    width: 16rem; /* Adjust width as needed */
+    z-index: 1000; /* Ensure it appears above other content */
+  }
+  
+  /* Style for links and buttons if needed */
+  nav-link {
+    display: block;
+  }
+
+  .no-underline {
+    text-decoration: none;
+  }

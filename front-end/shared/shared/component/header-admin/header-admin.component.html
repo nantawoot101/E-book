@@ -1,0 +1,45 @@
+<header class="flex flex-col p-4 bg-gray-900 text-white fixed left-0 top-0 h-full w-64 shadow-lg border-r border-gray-200 transition-transform duration-300">
+  <!-- Admin Links -->
+  <div class="mb-4">
+    <!-- Example Link with Hover Effect -->
+    <a *ngIf="userDetail && userDetail.roleId == 1" [routerLink]="['/dash-board-admin']" routerLinkActive="router-link-active" class="flex items-center mb-2 text-gray-50 hover:text-gray-900 hover:bg-gray-200 p-2 rounded transition-all duration-300 relative group no-underline">
+      <i class="fas fa-home fa-lg mr-2 transition-transform duration-300 group-hover:scale-110"></i>
+      หน้าหลัก
+      <div class="absolute inset-0 bg-gray-200 opacity-0 group-hover:opacity-50 transition-opacity duration-300"></div>
+    </a>
+    <a *ngIf="userDetail && userDetail.roleId == 1" [routerLink]="['/manage-users']" routerLinkActive="router-link-active" class="flex items-center mb-2 text-gray-50 hover:text-gray-900 hover:bg-gray-200 p-2 rounded transition-all duration-300 relative group no-underline">
+      <i class="fas fa-users fa-lg mr-2 transition-transform duration-300 group-hover:scale-110"></i>
+      จัดการลูกค้า
+      <div class="absolute inset-0 bg-gray-200 opacity-0 group-hover:opacity-50 transition-opacity duration-300"></div>
+    </a>
+    <a *ngIf="userDetail && userDetail.roleId == 1" [routerLink]="['/manage-product']" routerLinkActive="router-link-active" class="flex items-center mb-2 text-gray-50 hover:text-gray-900 hover:bg-gray-200 p-2 rounded transition-all duration-300 relative group no-underline">
+      <i class="fas fa-box fa-lg mr-2 transition-transform duration-300 group-hover:scale-110"></i>
+      จัดการสินค้า
+      <div class="absolute inset-0 bg-gray-200 opacity-0 group-hover:opacity-50 transition-opacity duration-300"></div>
+    </a>
+    <a [routerLink]="['/product-type']" routerLinkActive="router-link-active" class="flex items-center mb-2 text-gray-50 hover:text-gray-900 hover:bg-gray-200 p-2 rounded transition-all duration-300 relative group no-underline">
+      <i class="fas fa-tags fa-lg mr-2 transition-transform duration-300 group-hover:scale-110"></i>
+      หมวดหมู่สินค้า
+      <div class="absolute inset-0 bg-gray-200 opacity-0 group-hover:opacity-50 transition-opacity duration-300"></div>
+    </a>
+    <a *ngIf="userDetail && userDetail.roleId == 1" [routerLink]="['/report']" routerLinkActive="router-link-active" class="flex items-center mb-2 text-gray-50 hover:text-gray-900 hover:bg-gray-200 p-2 rounded transition-all duration-300 relative group no-underline">
+      <i class="fas fa-file-alt fa-lg mr-2 transition-transform duration-300 group-hover:scale-110"></i>
+      รายงาน
+      <div class="absolute inset-0 bg-gray-200 opacity-0 group-hover:opacity-50 transition-opacity duration-300"></div>
+    </a>
+    <a *ngIf="userDetail && userDetail.roleId == 1" [routerLink]="['/manage-order']" routerLinkActive="router-link-active" class="flex items-center mb-2 text-gray-50 hover:text-gray-900 hover:bg-gray-200 p-2 rounded transition-all duration-300 relative group no-underline">
+      <i class="fas fa-receipt fa-lg mr-2 transition-transform duration-300 group-hover:scale-110"></i>
+      จัดการคำสั่งซื้อ
+      <div class="absolute inset-0 bg-gray-200 opacity-0 group-hover:opacity-50 transition-opacity duration-300"></div>
+    </a>
+    <a *ngIf="userDetail && userDetail.roleId == 1" [routerLink]="['/manage-payment']" routerLinkActive="router-link-active" class="flex items-center mb-2 text-gray-50 hover:text-gray-900 hover:bg-gray-200 p-2 rounded transition-all duration-300 relative group no-underline">
+      <i class="fas fa-credit-card fa-lg mr-2 transition-transform duration-300 group-hover:scale-110"></i>
+      การชำระเงิน
+      <div class="absolute inset-0 bg-gray-200 opacity-0 group-hover:opacity-50 transition-opacity duration-300"></div>
+    </a>
+  </div>
+
+  <button type="button" class="btn bg-red-600 hover:bg-red-700 text-white w-full mt-4 flex items-center justify-center rounded-lg shadow-md transition-transform duration-300 transform hover:scale-105" (click)="logout()">
+    <i class="fas fa-sign-out-alt mr-2"></i> ออกจากระบบ
+  </button>
+</header>

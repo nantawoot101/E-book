@@ -1,0 +1,67 @@
+<header *ngIf="!userDetail || userDetail.roleId !== 1" 
+        [ngClass]="{ 'flex-row': !userDetail || userDetail.roleId !== 1, 'p-3 bg-green-600 text-white': true }" 
+        class="flex flex-wrap">
+  <div class="container">
+    <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+      <!-- Navigation Links -->
+      <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+        <!-- Home Link -->
+        <li *ngIf="!userDetail">
+          <a [routerLink]="['/']" routerLinkActive="router-link-active" class="nav-link px-2 text-white text-5xl">
+            <i class="fas fa-book"></i> E-BOOK
+          </a>
+        </li>
+        <li *ngIf="userDetail && userDetail.roleId == 2">
+          <a [routerLink]="['/']" routerLinkActive="router-link-active" class="nav-link px-2 text-white text-5xl">
+            <i class="fas fa-book"></i> E-BOOK
+          </a>
+        </li>
+      </ul>
+      <!-- Search Bar -->
+      <div class="my-2" *ngIf="!userDetail || userDetail.roleId !== 1">
+        <div class="input-group">
+          <input type="text"  class="w-[500px] text-black" placeholder="ค้นหาสินค้า">
+          <button class="btn btn-outline-light mr-2" type="button" (click)="searchProduct()">ค้นหา</button>
+        </div>
+      </div>
+      
+      <!-- Cart Button -->
+      <div *ngIf="userDetail && userDetail.roleId === 2" class="relative ml-2">
+        <button class="relative bg-green-600 border-2 border-white hover:bg-green-700 flex items-center px-2 py-1 rounded-lg text-white mr-3" [routerLink]="['/cart']">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 30 30" stroke="#ffffff" class="w-7 h-7">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+          </svg>
+          <span>ตระกร้า</span>
+        </button>
+        <span *ngIf="cartItemCount > 0" class="absolute top-0 right-3 bg-red-500 text-white rounded-full px-2 py-1 text-xs leading-none transform translate-x-1/2 -translate-y-1/2">
+          {{ cartItemCount }}
+        </span>
+      </div>
+      
+      <!-- Login/Logout Buttons -->
+      <div class="text-end" *ngIf="!userDetail">
+        <button type="button" class="btn bg-green-600 hover:bg-green-700 text-white border-2 border-white me-2" [routerLink]="['/login']" routerLinkActive="router-link-active mr-2">เข้าสู่ระบบ</button>
+        <button type="button" class="btn bg-yellow-500 text-white hover:bg-yellow-600 border-2 border-white" [routerLink]="['/register']" routerLinkActive="router-link-active">สมัครสมาชิก</button>
+      </div>
+      <div class="text-end nav-item dropdown ml-1" *ngIf="userDetail && userDetail.roleId == 2">
+        <a href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
+          <img *ngIf="userDetail.userImgName" [src]="imgBaseUrl + userDetail.userImgName" alt="Profile" class="w-12 h-12 rounded-full object-cover">
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <li><a class="dropdown-item" [routerLink]="['/personal']">โปรไฟล์</a></li>
+          <li><a class="dropdown-item" [routerLink]="['/address']">ที่อยู่จัดส่ง</a></li>
+          <li><a class="dropdown-item" [routerLink]="['/orderItem']">รายการสินค้า</a></li>
+          <li><a class="dropdown-item" [routerLink]="['/order-history']">ประวัติการสั่งซื้อ</a></li>
+          <button type="button" class="btn bg-red-500 text-gray-50 border-2 hover:bg-white hover:text-red-500 hover:border-red-500 ml-2 mb-2 mt-2" (click)="logout()">ออกจากระบบ</button>
+        </ul>
+      </div>
+      <div *ngIf="userDetail && userDetail.roleId == 2">
+        <i class="fas fa-bell fa-2x ml-3" [routerLink]="['/notifications']" routerLinkActive="router-link-active" style="cursor: pointer;"></i>
+      </div>
+      <button (click)="toggleTheme()" class="px-2 py-1 ml-3 rounded-lg transition-colors duration-300" 
+      [ngClass]="isDarkMode ? 'bg-gray-800 hover:bg-gray-700 text-white' : 'bg-yellow-400 hover:bg-yellow-300 text-black'">
+    <i class="fas" [ngClass]="isDarkMode ? 'fa-moon' : 'fa-sun'"></i>
+    </button>
+    </div>
+  </div>
+</header>
